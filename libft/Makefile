@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ddo-carm <ddo-carm@student.42porto.com>    +#+  +:+       +#+         #
+#    By: ddo-carm <ddo-carm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/07 00:16:12 by ddo-carm          #+#    #+#              #
-#    Updated: 2025/02/07 00:16:12 by ddo-carm         ###   ########.fr        #
+#    Created: 2024/10/25 12:13:34 by ddo-carm          #+#    #+#              #
+#    Updated: 2024/11/05 16:05:51 by ddo-carm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,74 @@
 # /__________)                                        (__________\ 
 
 
-NAME = push_swap
-LIBFT_D = ./libft
-LIBFT = $(LIBFT_D)/libft.a
-SRCS_D = ./srcs
-INCLUDES = ./include
+NAME = libft.a
+SRCS_D = .
+HEADER = $(SRCS_D)/libft.h
 
 #source files
-SRC = $(SRCS_D)/
+SRC = $(SRCS_D)/ft_isalpha.c \
+	$(SRCS_D)/ft_isdigit.c \
+	$(SRCS_D)/ft_isalnum.c \
+	$(SRCS_D)/ft_isascii.c \
+	$(SRCS_D)/ft_isprint.c \
+	$(SRCS_D)/ft_strlen.c \
+	$(SRCS_D)/ft_memset.c \
+	$(SRCS_D)/ft_bzero.c \
+	$(SRCS_D)/ft_memcpy.c \
+	$(SRCS_D)/ft_memmove.c \
+	$(SRCS_D)/ft_strlcpy.c \
+	$(SRCS_D)/ft_strlcat.c \
+	$(SRCS_D)/ft_toupper.c \
+	$(SRCS_D)/ft_tolower.c \
+	$(SRCS_D)/ft_strchr.c \
+	$(SRCS_D)/ft_strrchr.c \
+	$(SRCS_D)/ft_strncmp.c \
+	$(SRCS_D)/ft_memchr.c \
+	$(SRCS_D)/ft_memcmp.c \
+	$(SRCS_D)/ft_strnstr.c \
+	$(SRCS_D)/ft_atoi.c \
+	$(SRCS_D)/ft_calloc.c \
+	$(SRCS_D)/ft_strdup.c \
+	$(SRCS_D)/ft_substr.c \
+	$(SRCS_D)/ft_strjoin.c \
+	$(SRCS_D)/ft_itoa.c \
+	$(SRCS_D)/ft_strmapi.c \
+	$(SRCS_D)/ft_striteri.c \
+	$(SRCS_D)/ft_putchar_fd.c \
+	$(SRCS_D)/ft_putstr_fd.c \
+	$(SRCS_D)/ft_putendl_fd.c \
+	$(SRCS_D)/ft_putnbr_fd.c \
+	$(SRCS_D)/ft_strtrim.c \
+	$(SRCS_D)/ft_split.c \
+	$(SRCS_D)/free_arrays.c \
+	$(SRCS_D)/errors.c \
+	$(SRCS_D)/close_pipe.c \
+
+
+BONUS_SRC = $(SRCS_D)/ft_lstnew_bonus.c \
+			$(SRCS_D)/ft_lstadd_front_bonus.c \
+			$(SRCS_D)/ft_lstsize_bonus.c \
+			$(SRCS_D)/ft_lstlast_bonus.c \
+			$(SRCS_D)/ft_lstadd_back_bonus.c \
+			$(SRCS_D)/ft_lstdelone_bonus.c \
+			$(SRCS_D)/ft_lstclear_bonus.c \
+			$(SRCS_D)/ft_lstiter_bonus.c \
+			$(SRCS_D)/ft_lstmap_bonus.c 
+
+FTPRINTF_SRC = $(SRCS_D)/ft_printf.c \
+			$(SRCS_D)/ft_printf_utils.c \
+			$(SRCS_D)/ft_hex_utils.c
+
+GNL_SRC = $(SRCS_D)/get_next_line.c \
+		$(SRCS_D)/get_next_line_utils.c \
+		$(SRCS_D)/get_next_line_bonus.c \
+		$(SRCS_D)/get_next_line_utils_bonus.c
+
+#object files
+OBJ = $(SRC:.c=.o)
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
+FTPRINTF_OBJ = $(FTPRINTF_SRC:.c=.o)
+GNL_OBJ = $(GNL_SRC:.c=.o)
 
 #		   ________________________________________________
 #  _______|                                               |_______
@@ -34,12 +94,10 @@ SRC = $(SRCS_D)/
 #  /      |_______________________________________________|     \ 
 # /__________)                                        (__________\ 
 
-
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
-HEADER = -I$(INCLUDES) -I$(LIBFT_D)
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+AR = ar rcs
 
 #          ________________________________________________
 # ________|                                               |_______
@@ -48,16 +106,18 @@ VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 #  /      |_______________________________________________|     \ 
 # /__________)                                        (__________\ 
 
-all: $(NAME) 
 
-$(NAME): $(SRC) $(LIBFT)
-	$(CC) $(CFLAGS) $(HEADER) $(SRC) $(LIBFT) -o $(NAME)
+all: $(NAME)
+
+#compile the lib
+$(NAME): $(OBJ) $(BONUS_OBJ) $(FTPRINTF_OBJ) $(GNL_OBJ)
+	$(AR) $(NAME) $(OBJ) $(BONUS_OBJ) $(FTPRINTF_OBJ) $(GNL_OBJ)
 	@echo "$(BGRN)✨Compilation completed✨"
 
-$(LIBFT):
-	@make -C $(LIBFT_D)	
-	@echo "$(BGRN)✨libft compilation completed✨"
-
+#compile .o files
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(BMAG)Compiling..."
 
 #          ________________________________________________
 # ________|                                               |_______
@@ -68,18 +128,17 @@ $(LIBFT):
 
 #remove .o
 clean:
-	@make clean -C $(LIBFT_D)
+	$(RM) $(OBJ) $(BONUS_OBJ) $(FTPRINTF_OBJ) $(GNL_OBJ)
 	@echo "$(BMAG)✨Objects removed $(BGRN)successfully✨"
+
 
 #clean and remove
 fclean: clean
-	@$(RM) $(NAME)
-	@make fclean -C $(LIBFT_D)
+	$(RM) $(NAME)
 	@echo "$(BMAG)✨Program removed $(BGRN)successfully✨"
-
+	
 #remake
-re: fclean
-	make all
+re: fclean all
 	@echo "$(BMAG)✨Re-compile was $(BGRN)successfull✨"
 
 #          ________________________________________________
@@ -91,13 +150,14 @@ re: fclean
 
 #help
 help:
-	@echo "✳$(BMAG) make      $(BWHI)-> $(BMAG)compiles the lib"
+	@echo "✳$(BMAG) make  $(BWHI)    -> $(BMAG)compiles the lib"
+
 	@echo "$(BWHI)✳$(BMAG) clean    $(BWHI) -> $(BMAG)removes all objects"
 	@echo "$(BWHI)✳$(BMAG) fclean    $(BWHI)-> $(BMAG)removes all objects plus the program"
 	@echo "$(BWHI)✳$(BMAG) re        $(BWHI)-> $(BMAG)removes all objects plus the program and recompiles the lib"
 
 #Phony targets to avoid clashes
-.PHONY: all clean fclean re help
+.PHONY: all clean fclean re
 
 #          ________________________________________________
 # ________|                                               |_______
