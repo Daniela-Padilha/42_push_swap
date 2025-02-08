@@ -5,6 +5,7 @@ Push Swap is a 42 school algorithm project aimed to better understand structures
 ## Sources
 
 [Tutorial](https://www.youtube.com/watch?v=wRvipSG4Mmk&t=1435s&ab_channel=Thuggonaut)
+
 [The Turk Algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
 
 
