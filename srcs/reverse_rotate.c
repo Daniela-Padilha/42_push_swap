@@ -1,47 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddo-carm <ddo-carm@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 14:23:33 by ddo-carm          #+#    #+#             */
-/*   Updated: 2025/02/07 14:23:33 by ddo-carm         ###   ########.fr       */
+/*   Created: 2025/02/08 13:09:55 by ddo-carm          #+#    #+#             */
+/*   Updated: 2025/02/08 13:09:55 by ddo-carm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_digit(char **nbrs)
-{
-	int	i;
-	int	j;
+//info --> brings the bottom node of a to the top
 
-	i = 0;
-	j = 0;
-	while (nbrs[j][i])
-	{
-		if (nbrs[j] > INT_MAX || nbrs[j] < INT_MIN)
-			return (-1);
-		while (nbrs[i])
-		{
-			if (ft_isdigit(i) == 1 || i == 43 || i == 45)
-				i++;
-			else
-				return (-1);
-		}
-		j++;
-	}
-	return (0);
-}
+rra()
 
-int	check_dup(char **nbrs)
-{
-	int	i;
-	int	j;
+//info --> brings the bottom node of b to the top
 
-	while (nbrs[j][i])
-	{
+rrb()
 
-	}
-}
+
+//info --> does rra and rrb at the same time
+
+rrr()

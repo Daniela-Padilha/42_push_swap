@@ -21,14 +21,26 @@
 
 typedef struct s_stack
 {
+	int				nbr;
+	int				index;
+	int				push_cost;
+	bool			above_median;
+	bool			cheapest;
 	struct s_stack	*target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
 
 
+//Init
 
-//Operations
+//Stack_utils
+
+//Commands
+
+//Algorithm
+
+//Errors
 
 
 

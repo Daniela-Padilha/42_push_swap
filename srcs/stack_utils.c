@@ -1,47 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddo-carm <ddo-carm@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 14:23:33 by ddo-carm          #+#    #+#             */
-/*   Updated: 2025/02/07 14:23:33 by ddo-carm         ###   ########.fr       */
+/*   Created: 2025/02/08 14:25:27 by ddo-carm          #+#    #+#             */
+/*   Updated: 2025/02/08 14:25:27 by ddo-carm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_digit(char **nbrs)
+int	stack_size(t_stack *lst)
 {
-	int	i;
-	int	j;
+	int	count;
 
-	i = 0;
-	j = 0;
-	while (nbrs[j][i])
+	count = 0;
+	if (!lst)
+		return (0);
+	while (lst)
 	{
-		if (nbrs[j] > INT_MAX || nbrs[j] < INT_MIN)
-			return (-1);
-		while (nbrs[i])
-		{
-			if (ft_isdigit(i) == 1 || i == 43 || i == 45)
-				i++;
-			else
-				return (-1);
-		}
-		j++;
+		lst = lst->next;
+		count++;
 	}
-	return (0);
-}
-
-int	check_dup(char **nbrs)
-{
-	int	i;
-	int	j;
-
-	while (nbrs[j][i])
-	{
-
-	}
+	return (count);
 }

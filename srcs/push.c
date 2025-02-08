@@ -1,47 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddo-carm <ddo-carm@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 14:23:33 by ddo-carm          #+#    #+#             */
-/*   Updated: 2025/02/07 14:23:33 by ddo-carm         ###   ########.fr       */
+/*   Created: 2025/02/08 13:11:58 by ddo-carm          #+#    #+#             */
+/*   Updated: 2025/02/08 13:11:58 by ddo-carm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_digit(char **nbrs)
-{
-	int	i;
-	int	j;
+//info --> push the top node of b to the top of a
 
-	i = 0;
-	j = 0;
-	while (nbrs[j][i])
-	{
-		if (nbrs[j] > INT_MAX || nbrs[j] < INT_MIN)
-			return (-1);
-		while (nbrs[i])
-		{
-			if (ft_isdigit(i) == 1 || i == 43 || i == 45)
-				i++;
-			else
-				return (-1);
-		}
-		j++;
-	}
-	return (0);
-}
+pa()
 
-int	check_dup(char **nbrs)
-{
-	int	i;
-	int	j;
+//info --> push the top node of a to the top of b
 
-	while (nbrs[j][i])
-	{
-
-	}
-}
+pb()

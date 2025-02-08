@@ -1,47 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddo-carm <ddo-carm@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 14:23:33 by ddo-carm          #+#    #+#             */
-/*   Updated: 2025/02/07 14:23:33 by ddo-carm         ###   ########.fr       */
+/*   Created: 2025/02/08 13:05:24 by ddo-carm          #+#    #+#             */
+/*   Updated: 2025/02/08 13:05:24 by ddo-carm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_digit(char **nbrs)
-{
-	int	i;
-	int	j;
+//info --> swaps the first two nodes in a
 
-	i = 0;
-	j = 0;
-	while (nbrs[j][i])
-	{
-		if (nbrs[j] > INT_MAX || nbrs[j] < INT_MIN)
-			return (-1);
-		while (nbrs[i])
-		{
-			if (ft_isdigit(i) == 1 || i == 43 || i == 45)
-				i++;
-			else
-				return (-1);
-		}
-		j++;
-	}
-	return (0);
-}
+sa()
 
-int	check_dup(char **nbrs)
-{
-	int	i;
-	int	j;
+//info --> swaps the first two nodes in b
 
-	while (nbrs[j][i])
-	{
+sb()
 
-	}
-}
+//info --> swaps the first two nodes in a and b at the same time
+
+ss()
