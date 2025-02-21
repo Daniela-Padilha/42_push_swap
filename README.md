@@ -1,6 +1,6 @@
 ## About
 
-Push Swap is a 42 school algorithm project aimed to better understand structures, where we must sort a given list of random numbers with a limited set of instructions, using the lowest possible number of actions.
+Push Swap is a 42 school algorithm project aimed to better understand structures, algorithms and the concept of complexity, where we must sort a given list of random numbers with a limited set of instructions, using the lowest possible number of actions.
 
 ## Sources
 
