@@ -25,8 +25,16 @@ SRCS_D = ./srcs
 INCLUDES = ./include
 
 #source files
-SRC = $(SRCS_D)/
-
+SRC = $(SRCS_D)/push_swap.c \
+	$(SRCS_D)/stacks_init.c \
+	$(SRCS_D)/stack_utils.c \
+	$(SRCS_D)/push.c \
+	$(SRCS_D)/swap.c \
+	$(SRCS_D)/rotate.c \
+	$(SRCS_D)/reverse_rotate.c \
+	$(SRCS_D)/algorithms.c \
+	$(SRCS_D)/errors.c
+	
 #		   ________________________________________________
 #  _______|                                               |_______
 # \       |                FLAGS & COMMANDS               |      /

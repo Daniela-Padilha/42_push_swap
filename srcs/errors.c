@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
 int	check_digit(char **nbrs)
 {
@@ -42,6 +42,21 @@ int	check_dup(char **nbrs)
 
 	while (nbrs[j][i])
 	{
+	}
+}
 
+//info --> free the whole stack
+
+void	free_stack(t_node *node)
+{
+	t_node	*tmp;
+
+	if (!*node || !node)
+		return ;
+	while (*node)
+	{
+		tmp = (*node)->next;
+		free(*node);
+		*node = tmp;
 	}
 }

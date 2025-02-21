@@ -10,12 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
+
+//info --> start the empty stacks
+//			handle wrong number of args, or second arg empty (" ")
+//			handle 2 or more args (./ 1 2 3 4 and ./ "1 2 3 4")
+//			init stack a, put each nbr in a node, handle duplicates, signs...
+//			check if stack a is sorted, and sort
 
 int	main(int ac, char **av)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_node	*a;
+	t_node	*b;
 
 	a = NULL;
 	b = NULL;
@@ -31,7 +37,7 @@ int	main(int ac, char **av)
 		if (stack_size(a) == 3)
 			sort_three(&a);
 		else
-			sort_stack(&a, &b);
+			turk(&a, &b);
 	}
 	free_stack(&a);
 	return (0);

@@ -10,16 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
+
+//info --> change the head to the tail
+//		update the *prev and *next of the old head
+//		update the *next of the old tail
+//		update the *prev of the new head
+
+void	rotate(t_node **stack)
+{
+	t_node	*last_node;
+
+	if (!*stack || !(*stack)->next)
+		return ;
+	last_node = last_node(*stack);
+	last_node->next = *stack;
+	(*stack)->prev = NULL;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
+}
 
 //info --> brings the top node of a to the bottom
 
-ra()
+void	ra(t_node **a)
+{
+	rotate(a);
+	ft_printf("ra\n");
+}
 
 //info --> brings the top node of b to the bottom
 
-rb()
+void	rb(t_node **b)
+{
+	rotate(b);
+	ft_printf("rb\n");
+}
 
 //info --> does ra and rb at the same time
 
-rr()
+void	rr(t_node **a, t_node **b)
+{
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
+}
