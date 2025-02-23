@@ -17,7 +17,7 @@
 //		update the *next and *prev of the new head
 //		update the *next of the new tail
 
-void	reverse_rotate(t_node **stack)
+static void	reverse_rotate(t_node **stack)
 {
 	t_node	*last_node;
 

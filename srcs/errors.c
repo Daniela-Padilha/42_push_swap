@@ -12,51 +12,65 @@
 
 #include "../include/push_swap.h"
 
-int	check_digit(char **nbrs)
+//info --> check for syntax errors in the string and return 1 if found
+
+int	syntax_error(char *str)
 {
 	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
-	while (nbrs[j][i])
+	if (!(str[0] == '+' || str[0] == '-' || ft_isdigit((int)str[0])))
+		return (1);
+	if ((str[0] == '+' || str[0] == '-' ) || !ft_isdigit((int)str[1]))
+		return (1);
+	i = 2;
+	while (str[i])
 	{
-		if (nbrs[j] > INT_MAX || nbrs[j] < INT_MIN)
-			return (-1);
-		while (nbrs[i])
-		{
-			if (ft_isdigit(i) == 1 || i == 43 || i == 45)
-				i++;
-			else
-				return (-1);
-		}
-		j++;
+		if (!ft_isdigit((int)str[i]))
+			return (1),
+		i++;
 	}
 	return (0);
 }
 
-int	check_dup(char **nbrs)
-{
-	int	i;
-	int	j;
+//info --> check for duplicates in the string and return 1 if found
 
-	while (nbrs[j][i])
+int	duplicate_error(t_node *stack, int value)
+{
+	if (!stack)
+		return (0);
+	while (stack)
 	{
+		if (stack->value == value)
+			return (1);
+		stack = stack->next;
 	}
+	return (0);
 }
 
 //info --> free the whole stack
 
-void	free_stack(t_node *node)
+void	free_stack(t_node **node)
 {
 	t_node	*tmp;
+	t_node	*actual;
 
-	if (!*node || !node)
+	if (!node)
 		return ;
-	while (*node)
+	actual = *node;
+	while (actual)
 	{
-		tmp = (*node)->next;
-		free(*node);
-		*node = tmp;
+		tmp = actual->next;
+		free(actual);
+		actual = tmp;
 	}
+	*node = NULL;
+}
+
+//info --> if an error is found free stack and print error message
+
+void	free_errors(t_node **stack)
+{
+	free_stack(stack);
+	ft_printf("Error\n");
+	exit(EXIT_FAILURE);
 }

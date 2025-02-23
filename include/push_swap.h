@@ -30,8 +30,16 @@ typedef struct s_node
 }	t_node;
 
 //Stacks init
+void	init_stack(t_node **a, char **av);
+void	add_node(t_node **stack, int nbr);
+t_node	*find_cheapest(t_node *stack);
+void	put_on_top(t_node **stack, t_node *top_node, char name);
 
 //Nodes init
+void	init_b_nodes(t_node *a, t_node *b);
+void	init_a_nodes(t_node *a, t_node *b);
+void	get_index(t_node *stack);
+void	find_cheapest(t_node *stack);
 
 //Stack utils
 int		stack_size(t_node *node);
@@ -41,18 +49,14 @@ t_node	*find_max(t_node *node);
 bool	stack_sorted(t_node *node);
 
 //Operations
-void	ft_push(t_node **src, t_node **dest);
 void	pa(t_node **b, t_node **a);
 void	pb(t_node **a, t_node **b);
-void	swap(t_node **head);
 void	sa(t_node **a);
 void	sb(t_node **b);
 void	ss(t_node **a, t_node **b);
-void	rotate(t_node **stack);
 void	ra(t_node **a);
 void	rb(t_node **b);
 void	rr(t_node **a, t_node **b);
-void	reverse_rotate(t_node **stack);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
@@ -62,6 +66,9 @@ void	sort_three(t_node **a);
 void	turk(t_node **a, t_node **b);
 
 //Errors
-void	free_stack(t_node *node);
+int		syntax_error(char *str);
+int		duplicate_error(t_node *stack, int value);
+void	free_stack(t_node **node);
+void	free_errors(t_node **stack);
 
 #endif

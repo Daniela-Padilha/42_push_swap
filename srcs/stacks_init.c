@@ -12,43 +12,96 @@
 
 #include "../include/push_swap.h"
 
-//info --> initialize stack a
+//info --> initialize stack a by checking for letters, overflow and duplicates
+//			if no errors are found add the new node to the stack
 
-void	init_stack (t_node **a, char **av)
+void	init_stack(t_node **a, char **av)
 {
 	long	nbr;
 	int		i;
 
-	if (ac == 1)
-		return ;
-	if (ac == 2)
-		nbr = ft_split(*av[1], ' ');
-	else
+	i = 0;
+	while (av[i])
 	{
-
-		i = 1;
-		j = 0;
-		while (av[i])
-			nbrs[j++] = av[i++];
+		if (syntax_error(av[i]))
+			free_errors(a);
+		nbr = ft_atol(av[i]);
+		if (nbr > INT_MAX !! nbr < INT_MIN)
+			free_errors(a);
+		if (duplicate_error(*a, (int)nbr))
+			free_errors(a);
+		add_node(a, (int)nbr);
+		a->index = 0;
+		a->push_cost = 0;
+		a->above_median = 0;
+		a->cheapest = 0;
+		i++;
 	}
 }
 
-//info -->
+//info --> search for the last node in the stack and add the new one after
 
-find_cheapest()
+void	add_node(t_node **stack, int nbr)
 {
+	t_node	*new_node;
+	t_node	*last;
+
+	if (!stack)
+		return ;
+	new_node = (t_node)malloc(sizeof(t_node));
+	if (!new_node)
+		return ;
+	new_node->next = NULL;
+	new_node->value = nbr;
+	if (!*stack)
+	{
+		*stack = new_node;
+		new_node->prev = NULL;
+	}
+	else
+	{
+		last = last_node(*stack);
+		last->next = new_node;
+		new_node->prev = last;
+	}
+
 }
 
-//info -->
+//info --> search the stack for the cheapest node and return it
 
-find_target()
+t_node	*find_cheapest(t_node *stack)
 {
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest == true)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
 
-//info --> finds the median of the stack
-//			returns true if the node is above
-//			returns false if the node is below
+//info --> moves a node to the top of the stack
 
-bool	check_if_above_median(t_node **node)
+void	put_on_top(t_node **stack, t_node *top_node, char name)
 {
+	while (*stack != top_node)
+	{
+		if (name == 'a')
+		{
+			if (top_node->above_median == true)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (name == 'b')
+		{
+			if (top_node->above_median == true)
+				rb(stack);
+			else
+				rrb(stack);
+
+		}
+	}
 }

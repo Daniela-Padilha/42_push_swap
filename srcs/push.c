@@ -16,7 +16,7 @@
 //			*next = NULL in case dest is empty
 //			if not empty, update *next of new node and *prev of existing node
 
-void	ft_push(t_node **src, t_node **dest)
+static void	ft_push(t_node **src, t_node **dest)
 {
 	t_node	*push_this;
 

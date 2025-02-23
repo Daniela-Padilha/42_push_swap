@@ -17,7 +17,7 @@
 //		if there is a 3º node, update its' *prev
 //		update the *prev and *next of the new head
 
-void	swap(t_node **head)
+static void	swap(t_node **head)
 {
 	if (!*head || !(*head)->next)
 		return ;
