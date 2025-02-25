@@ -49,14 +49,14 @@ t_node	*find_min(t_node *node)
 	t_node	*min_node;
 	long	min_value;
 
-	if (!*node)
+	if (!node)
 		return (NULL);
-	min = LONG_MAX;
+	min_value = LONG_MAX;
 	while (node)
 	{
-		if (node->value < min)
+		if (node->value < min_value)
 		{
-			min = node->value;
+			min_value = node->value;
 			min_node = node;
 		}
 		node = node->next;
@@ -71,14 +71,14 @@ t_node	*find_max(t_node *node)
 	t_node	*max_node;
 	long	max_value;
 
-	if (!*node)
+	if (!node)
 		return (NULL);
-	max = LONG_MIN;
+	max_value = LONG_MIN;
 	while (node)
 	{
-		if (node->value > max)
+		if (node->value > max_value)
 		{
-			max = node->value;
+			max_value = node->value;
 			max_node = node;
 		}
 		node = node->next;
@@ -90,7 +90,7 @@ t_node	*find_max(t_node *node)
 
 bool	stack_sorted(t_node *node)
 {
-	if (!*node)
+	if (!node)
 		return (1);
 	while (node->next)
 	{

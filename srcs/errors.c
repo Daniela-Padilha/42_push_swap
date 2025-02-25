@@ -16,18 +16,15 @@
 
 int	syntax_error(char *str)
 {
-	int	i;
-
-	if (!(str[0] == '+' || str[0] == '-' || ft_isdigit((int)str[0])))
+	if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
 		return (1);
-	if ((str[0] == '+' || str[0] == '-' ) || !ft_isdigit((int)str[1]))
+	if ((*str == '+' || *str == '-' ) || !(str[1] >= '0' && str[1] <= '9'))
 		return (1);
-	i = 2;
-	while (str[i])
+	while (*str)
 	{
-		if (!ft_isdigit((int)str[i]))
-			return (1),
-		i++;
+		if (!(*str >= '0' && *str <= '9'))
+			return (1);
+		++str;
 	}
 	return (0);
 }

@@ -19,15 +19,15 @@
 
 static void	rotate(t_node **stack)
 {
-	t_node	*last_node;
+	t_node	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last_node = last_node(*stack);
-	last_node->next = *stack;
+	last = last_node(*stack);
+	last->next = *stack;
 	(*stack)->prev = NULL;
-	last_node->next->prev = last_node;
-	last_node->next->next = NULL;
+	last->next->prev = last;
+	last->next->next = NULL;
 }
 
 //info --> brings the top node of a to the bottom

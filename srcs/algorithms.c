@@ -35,51 +35,25 @@ void	sort_three(t_node **a)
 
 void	turk(t_node **a, t_node **b)
 {
-	pb(a, b);
-	pb(a, b);
-	while (stack_size(a) > 3)
-	{
-		sort_b(b);
+	int	a_size;
+
+	a_size = stack_size(*a);
+	if (a_size-- > 3 && !stack_sorted(*a))
 		pb(a, b);
+	if (a_size-- > 3 && !stack_sorted(*a))
+		pb(a, b);
+	while (a_size > 3 && !stack_sorted(*a))
+	{
+		init_a_nodes(*a, *b);
+		move_to_b(a, b);
+		a_size--;
 	}
 	sort_three(a);
-	while (b)
-		pa(b, a);
+	while (*b)
+	{
+		init_b_nodes(*a, *b);
+		move_to_a(a, b);
+	}
+	get_index(*a);
 	final_sort(a);
-}
-
-//info -->
-
-void	sort_b(t_node **b)
-{
-}
-
-//info --> sorts the max and min nbrs in stack a
-
-void	final_sort(t_node **a)
-{
-	t_node	*temp;
-
-	temp = find_min(a);
-	if (check_if_above_median(temp) == true)
-	{
-		while (temp != *a)
-			ra(a);
-	}
-	else
-	{
-		while (temp != *a)
-			rra(a);
-	}
-	temp = find_max(a);
-	if (check_if_above_median(temp) == true)
-	{
-		while (temp)
-			ra(a);
-	}
-	else
-	{
-		while (temp)
-			rra(a);
-	}
 }

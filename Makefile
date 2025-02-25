@@ -35,6 +35,7 @@ SRC = $(SRCS_D)/push_swap.c \
 	$(SRCS_D)/rotate.c \
 	$(SRCS_D)/reverse_rotate.c \
 	$(SRCS_D)/algorithms.c \
+	$(SRCS_D)/algorithms_utils.c \
 	$(SRCS_D)/errors.c 
 
 	

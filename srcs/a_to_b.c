@@ -90,11 +90,11 @@ static void	analyze_cost_a(t_node *a, t_node *b)
 	}
 }
 
-//info --> check wich node is the cheapest based on the pushing cost
+//info --> set the cheapest node to true or false based on the pushing cost
 
-void	find_cheapest(t_node *stack)
+static void	set_cheapest(t_node *stack)
 {
-	long	chapest_value;
+	long	cheapest_value;
 	t_node	*cheapest_node;
 
 	if (!stack)
@@ -120,5 +120,5 @@ void	init_a_nodes(t_node *a, t_node *b)
 	get_index(b);
 	find_target_a(a, b);
 	analyze_cost_a(a, b);
-	find_cheapest(a);
+	set_cheapest(a);
 }

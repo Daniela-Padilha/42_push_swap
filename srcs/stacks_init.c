@@ -15,7 +15,7 @@
 //info --> initialize stack a by checking for letters, overflow and duplicates
 //			if no errors are found add the new node to the stack
 
-void	init_stack(t_node **a, char **av)
+void	init_stack_a(t_node **a, char **av)
 {
 	long	nbr;
 	int		i;
@@ -24,17 +24,26 @@ void	init_stack(t_node **a, char **av)
 	while (av[i])
 	{
 		if (syntax_error(av[i]))
+		{
+			ft_printf("syntax\n");
 			free_errors(a);
+		}
 		nbr = ft_atol(av[i]);
-		if (nbr > INT_MAX !! nbr < INT_MIN)
+		if (nbr > INT_MAX || nbr < INT_MIN)
+		{
+			ft_printf("overflow\n");
 			free_errors(a);
+		}
 		if (duplicate_error(*a, (int)nbr))
+		{
+			ft_printf("dup\n");
 			free_errors(a);
+		}
 		add_node(a, (int)nbr);
-		a->index = 0;
-		a->push_cost = 0;
-		a->above_median = 0;
-		a->cheapest = 0;
+		(*a)->index = 0;
+		(*a)->push_cost = 0;
+		(*a)->above_median = 0;
+		(*a)->cheapest = 0;
 		i++;
 	}
 }
@@ -48,7 +57,7 @@ void	add_node(t_node **stack, int nbr)
 
 	if (!stack)
 		return ;
-	new_node = (t_node)malloc(sizeof(t_node));
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
 	new_node->next = NULL;
@@ -64,7 +73,6 @@ void	add_node(t_node **stack, int nbr)
 		last->next = new_node;
 		new_node->prev = last;
 	}
-
 }
 
 //info --> search the stack for the cheapest node and return it
@@ -82,7 +90,7 @@ t_node	*find_cheapest(t_node *stack)
 	return (NULL);
 }
 
-//info --> moves a node to the top of the stack
+//info --> moves a node from stack name to the top of the stack
 
 void	put_on_top(t_node **stack, t_node *top_node, char name)
 {
@@ -101,7 +109,6 @@ void	put_on_top(t_node **stack, t_node *top_node, char name)
 				rb(stack);
 			else
 				rrb(stack);
-
 		}
 	}
 }

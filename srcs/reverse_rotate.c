@@ -19,16 +19,16 @@
 
 static void	reverse_rotate(t_node **stack)
 {
-	t_node	*last_node;
+	t_node	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last_node = last_node(*stack);
-	last_node->prev->next = NULL;
-	last_node->next = *stack;
-	last_node->prev = NULL;
-	*stack = last_node;
-	last_node->next->prev = last_node;
+	last = last_node(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
+	last->prev = NULL;
+	*stack = last;
+	last->next->prev = last;
 }
 
 //info --> brings the bottom node of a to the top
@@ -46,7 +46,6 @@ void	rrb(t_node **b)
 	reverse_rotate(b);
 	ft_printf("rrb\n");
 }
-
 
 //info --> does rra and rrb at the same time
 

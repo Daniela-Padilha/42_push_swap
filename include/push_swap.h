@@ -30,16 +30,15 @@ typedef struct s_node
 }	t_node;
 
 //Stacks init
-void	init_stack(t_node **a, char **av);
+void	init_stack_a(t_node **a, char **av);
 void	add_node(t_node **stack, int nbr);
-t_node	*find_cheapest(t_node *stack);
 void	put_on_top(t_node **stack, t_node *top_node, char name);
 
 //Nodes init
 void	init_b_nodes(t_node *a, t_node *b);
 void	init_a_nodes(t_node *a, t_node *b);
 void	get_index(t_node *stack);
-void	find_cheapest(t_node *stack);
+t_node	*find_cheapest(t_node *stack);
 
 //Stack utils
 int		stack_size(t_node *node);
@@ -61,9 +60,14 @@ void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 
-//Algorithm
+//Algorithms
 void	sort_three(t_node **a);
 void	turk(t_node **a, t_node **b);
+
+//Algorithms Utils
+void	move_to_a(t_node **a, t_node **b);
+void	move_to_b(t_node **a, t_node **b);
+void	final_sort(t_node **a);
 
 //Errors
 int		syntax_error(char *str);
