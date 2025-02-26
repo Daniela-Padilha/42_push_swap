@@ -16,15 +16,15 @@
 
 int	syntax_error(char *str)
 {
-	if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
-		return (1);
-	if ((*str == '+' || *str == '-' ) || !(str[1] >= '0' && str[1] <= '9'))
+	if (*str == '+' || *str == '-' )
+		str++;
+	if (*str == '\0')
 		return (1);
 	while (*str)
 	{
 		if (!(*str >= '0' && *str <= '9'))
 			return (1);
-		++str;
+		str++;
 	}
 	return (0);
 }
