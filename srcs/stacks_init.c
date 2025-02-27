@@ -15,30 +15,24 @@
 //info --> initialize stack a by checking for letters, overflow and duplicates
 //			if no errors are found add the new node to the stack
 
-void	init_stack_a(t_node **a, char **av)
+void	init_stack_a(t_node **a, int ac, char **av)
 {
 	long	nbr;
 	int		i;
 
-	i = 0;
+	if (ac == 2)
+		i = 0;
+	else
+		i = 1;
 	while (av[i])
 	{
 		if (syntax_error(av[i]))
-		{
-			ft_printf("syntax\n");
 			free_errors(a);
-		}
 		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-		{
-			ft_printf("overflow\n");
 			free_errors(a);
-		}
 		if (duplicate_error(*a, (int)nbr))
-		{
-			ft_printf("dup\n");
 			free_errors(a);
-		}
 		add_node(a, (int)nbr);
 		(*a)->index = 0;
 		(*a)->push_cost = 0;

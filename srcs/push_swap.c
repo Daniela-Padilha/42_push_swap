@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 		return (0);
 	else if (ac == 2)
 		av = ft_split(av[1], ' ');
-	init_stack_a(&a, av + 1);
+	init_stack_a(&a, ac, av);
 	if (!stack_sorted(a))
 	{
 		if (stack_size(a) == 2)
@@ -41,4 +41,14 @@ int	main(int ac, char **av)
 	}
 	free_stack(&a);
 	return (0);
+}
+
+void	print_stack(t_node *a)
+{
+	while (a)
+	{
+		ft_printf("%i ", a->value);
+		a = a->next;
+	}
+	ft_printf("\n");
 }

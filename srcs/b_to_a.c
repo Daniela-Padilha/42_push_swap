@@ -42,6 +42,7 @@ static void	find_target_b(t_node *a, t_node *b)
 	}
 }
 
+
 //info --> prepare to push the b node to the right place in stack a
 
 void	init_b_nodes(t_node *a, t_node *b)
@@ -49,4 +50,6 @@ void	init_b_nodes(t_node *a, t_node *b)
 	get_index(a);
 	get_index(b);
 	find_target_b(a, b);
+	analyze_cost(a, b);
+	set_cheapest(b);
 }

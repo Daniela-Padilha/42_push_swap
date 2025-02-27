@@ -30,7 +30,7 @@ typedef struct s_node
 }	t_node;
 
 //Stacks init
-void	init_stack_a(t_node **a, char **av);
+void	init_stack_a(t_node **a, int ac, char **av);
 void	add_node(t_node **stack, int nbr);
 void	put_on_top(t_node **stack, t_node *top_node, char name);
 
@@ -38,6 +38,8 @@ void	put_on_top(t_node **stack, t_node *top_node, char name);
 void	init_b_nodes(t_node *a, t_node *b);
 void	init_a_nodes(t_node *a, t_node *b);
 void	get_index(t_node *stack);
+void	analyze_cost(t_node *a, t_node *b);
+void	set_cheapest(t_node *stack);
 t_node	*find_cheapest(t_node *stack);
 
 //Stack utils
@@ -75,4 +77,6 @@ int		duplicate_error(t_node *stack, int value);
 void	free_stack(t_node **node);
 void	free_errors(t_node **stack);
 
+
+void	print_stack(t_node *a);
 #endif

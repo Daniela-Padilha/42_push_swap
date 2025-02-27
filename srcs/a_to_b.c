@@ -23,7 +23,7 @@ static void	find_target_a(t_node *a, t_node *b)
 
 	while (a)
 	{
-		target_value = LONG_MIN;
+		target_value = LONG_MAX;
 		actual_b = b;
 		while (actual_b)
 		{
@@ -34,7 +34,7 @@ static void	find_target_a(t_node *a, t_node *b)
 			}
 			actual_b = actual_b->next;
 		}
-		if (target_value == LONG_MIN)
+		if (target_value == LONG_MAX)
 			a->target = find_max(b);
 		else
 			a->target = target_node;
@@ -70,7 +70,7 @@ void	get_index(t_node *stack)
 //		push cost = nº of operations to bring a on top + nº of operations to
 //					bring the target on top
 
-static void	analyze_cost_a(t_node *a, t_node *b)
+void	analyze_cost(t_node *a, t_node *b)
 {
 	int	a_size;
 	int	b_size;
@@ -81,18 +81,18 @@ static void	analyze_cost_a(t_node *a, t_node *b)
 	{
 		a->push_cost = a->index;
 		if (!(a->above_median))
-			a->push_cost = a_size - (a->index);
+			a->push_cost = (a_size - (a->index)) + 1;
 		if (a->target->above_median)
 			a->push_cost += a->target->index;
 		else
-			a->push_cost += b_size - (a->target->index);
+			a->push_cost += (b_size - (a->target->index)) + 1 ;
 		a = a->next;
 	}
 }
 
 //info --> set the cheapest node to true or false based on the pushing cost
 
-static void	set_cheapest(t_node *stack)
+void	set_cheapest(t_node *stack)
 {
 	long	cheapest_value;
 	t_node	*cheapest_node;
@@ -119,6 +119,6 @@ void	init_a_nodes(t_node *a, t_node *b)
 	get_index(a);
 	get_index(b);
 	find_target_a(a, b);
-	analyze_cost_a(a, b);
+	analyze_cost(a, b);
 	set_cheapest(a);
 }

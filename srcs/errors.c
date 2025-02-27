@@ -68,6 +68,6 @@ void	free_stack(t_node **node)
 void	free_errors(t_node **stack)
 {
 	free_stack(stack);
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }

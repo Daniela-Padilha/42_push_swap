@@ -37,8 +37,9 @@ t_node	*last_node(t_node *node)
 
 	if (!node)
 		return (NULL);
-	while (node->next)
-		last = node->next;
+	last = node;
+	while (last->next)
+		last = last->next;
 	return (last);
 }
 

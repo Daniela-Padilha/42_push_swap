@@ -20,6 +20,11 @@ static void	rotate_2(t_node **a, t_node **b, t_node *cheapest)
 		rr(a, b);
 	get_index(*a);
 	get_index(*b);
+	ft_printf("r2\n");
+	ft_printf("stack a: ");
+	print_stack(*a);
+	ft_printf("stack b: ");
+	print_stack(*b);
 }
 
 //info --> rrr if it's the cheapest move, and update their index
@@ -30,6 +35,11 @@ static void	reverse_rotate_2(t_node **a, t_node **b, t_node *cheapest)
 		rrr(a, b);
 	get_index(*a);
 	get_index(*b);
+	ft_printf("rr2\n");
+	ft_printf("stack a: ");
+	print_stack(*a);
+	ft_printf("stack b: ");
+	print_stack(*b);
 }
 
 //info --> prepares the b stack targets to receive the a nodes
