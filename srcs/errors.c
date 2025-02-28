@@ -65,8 +65,14 @@ void	free_stack(t_node **node)
 
 //info --> if an error is found free stack and print error message
 
-void	free_errors(t_node **stack)
+void	free_errors(t_node **stack, int ac, char **av)
 {
+	if (ac > 2)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	free_arrays((void **)av);
 	free_stack(stack);
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);

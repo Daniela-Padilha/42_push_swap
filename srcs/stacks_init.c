@@ -27,12 +27,12 @@ void	init_stack_a(t_node **a, int ac, char **av)
 	while (av[i])
 	{
 		if (syntax_error(av[i]))
-			free_errors(a);
+			free_errors(a, ac, av);
 		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			free_errors(a);
+			free_errors(a, ac, av);
 		if (duplicate_error(*a, (int)nbr))
-			free_errors(a);
+			free_errors(a, ac, av);
 		add_node(a, (int)nbr);
 		(*a)->index = 0;
 		(*a)->push_cost = 0;

@@ -35,6 +35,7 @@ static void	swap(t_node **head)
 void	sa(t_node **a)
 {
 	swap(a);
+	get_index(*a);
 	ft_printf("sa\n");
 }
 
@@ -43,6 +44,7 @@ void	sa(t_node **a)
 void	sb(t_node **b)
 {
 	swap(b);
+	get_index(*b);
 	ft_printf("sb\n");
 }
 
@@ -52,5 +54,7 @@ void	ss(t_node **a, t_node **b)
 {
 	swap(a);
 	swap(b);
+	get_index(*a);
+	get_index(*b);
 	ft_printf("ss\n");
 }

@@ -45,6 +45,8 @@ static void	ft_push(t_node **src, t_node **dest)
 void	pa(t_node **b, t_node **a)
 {
 	ft_push(b, a);
+	get_index(*a);
+	get_index(*b);
 	ft_printf("pa\n");
 }
 
@@ -53,5 +55,7 @@ void	pa(t_node **b, t_node **a)
 void	pb(t_node **a, t_node **b)
 {
 	ft_push(a, b);
+	get_index(*a);
+	get_index(*b);
 	ft_printf("pb\n");
 }

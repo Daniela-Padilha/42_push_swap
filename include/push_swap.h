@@ -75,6 +75,6 @@ void	final_sort(t_node **a);
 int		syntax_error(char *str);
 int		duplicate_error(t_node *stack, int value);
 void	free_stack(t_node **node);
-void	free_errors(t_node **stack);
+void	free_errors(t_node **stack, int ac, char **av);
 
 #endif

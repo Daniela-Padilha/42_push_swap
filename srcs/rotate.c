@@ -36,6 +36,7 @@ static void	rotate(t_node **stack)
 void	ra(t_node **a)
 {
 	rotate(a);
+	get_index(*a);
 	ft_printf("ra\n");
 }
 
@@ -44,6 +45,7 @@ void	ra(t_node **a)
 void	rb(t_node **b)
 {
 	rotate(b);
+	get_index(*b);
 	ft_printf("rb\n");
 }
 
@@ -53,5 +55,7 @@ void	rr(t_node **a, t_node **b)
 {
 	rotate(a);
 	rotate(b);
+	get_index(*a);
+	get_index(*b);
 	ft_printf("rr\n");
 }
