@@ -46,10 +46,6 @@ void	pa(t_node **b, t_node **a)
 {
 	ft_push(b, a);
 	ft_printf("pa\n");
-	ft_printf("stack a: ");
-	print_stack(*a);
-	ft_printf("stack b: ");
-	print_stack(*b);
 }
 
 //info --> push the top node of a to the top of b
@@ -58,8 +54,4 @@ void	pb(t_node **a, t_node **b)
 {
 	ft_push(a, b);
 	ft_printf("pb\n");
-	ft_printf("stack a: ");
-	print_stack(*a);
-	ft_printf("stack b: ");
-	print_stack(*b);
 }

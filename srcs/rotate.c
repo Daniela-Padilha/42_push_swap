@@ -23,9 +23,9 @@ static void	rotate(t_node **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last = last_node(*stack); //42
-	last->next = *stack; // 42->99
-	(*stack)->prev = last; //42<-99
+	last = last_node(*stack);
+	last->next = *stack;
+	(*stack)->prev = last;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
 	last->next->next = NULL;
@@ -37,8 +37,6 @@ void	ra(t_node **a)
 {
 	rotate(a);
 	ft_printf("ra\n");
-	ft_printf("stack a: ");
-	print_stack(*a);
 }
 
 //info --> brings the top node of b to the bottom
@@ -47,8 +45,6 @@ void	rb(t_node **b)
 {
 	rotate(b);
 	ft_printf("rb\n");
-	ft_printf("stack b: ");
-	print_stack(*b);
 }
 
 //info --> does ra and rb at the same time
@@ -58,8 +54,4 @@ void	rr(t_node **a, t_node **b)
 	rotate(a);
 	rotate(b);
 	ft_printf("rr\n");
-	ft_printf("stack a: ");
-	print_stack(*a);
-	ft_printf("stack b: ");
-	print_stack(*b);
 }

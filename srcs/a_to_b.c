@@ -23,18 +23,18 @@ static void	find_target_a(t_node *a, t_node *b)
 
 	while (a)
 	{
-		target_value = LONG_MAX;
+		target_value = LONG_MIN;
 		actual_b = b;
 		while (actual_b)
 		{
-			if (actual_b->value > a->value && actual_b->value < target_value)
+			if (actual_b->value > a->value && actual_b->value > target_value)
 			{
 				target_value = actual_b->value;
 				target_node = actual_b;
 			}
 			actual_b = actual_b->next;
 		}
-		if (target_value == LONG_MAX)
+		if (target_value == LONG_MIN)
 			a->target = find_max(b);
 		else
 			a->target = target_node;
@@ -50,7 +50,7 @@ void	get_index(t_node *stack)
 	int	i;
 	int	median;
 
-	i = 1;
+	i = 0;
 	if (!stack)
 		return ;
 	median = stack_size(stack) / 2;
@@ -81,11 +81,11 @@ void	analyze_cost(t_node *a, t_node *b)
 	{
 		a->push_cost = a->index;
 		if (!(a->above_median))
-			a->push_cost = (a_size - (a->index)) + 1;
+			a->push_cost = (a_size - (a->index));
 		if (a->target->above_median)
 			a->push_cost += a->target->index;
 		else
-			a->push_cost += (b_size - (a->target->index)) + 1 ;
+			a->push_cost += (b_size - (a->target->index));
 		a = a->next;
 	}
 }

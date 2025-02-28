@@ -42,13 +42,3 @@ int	main(int ac, char **av)
 	free_stack(&a);
 	return (0);
 }
-
-void	print_stack(t_node *a)
-{
-	while (a)
-	{
-		ft_printf("%i ", a->value);
-		a = a->next;
-	}
-	ft_printf("\n");
-}

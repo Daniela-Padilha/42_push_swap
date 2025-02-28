@@ -77,6 +77,4 @@ int		duplicate_error(t_node *stack, int value);
 void	free_stack(t_node **node);
 void	free_errors(t_node **stack);
 
-
-void	print_stack(t_node *a);
 #endif
