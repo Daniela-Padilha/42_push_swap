@@ -69,6 +69,7 @@ void	free_errors(t_node **stack, int ac, char **av)
 {
 	if (ac > 2)
 	{
+		free_stack(stack);
 		ft_putstr_fd("Error\n", 2);
 		exit(EXIT_FAILURE);
 	}

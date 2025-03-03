@@ -29,8 +29,6 @@ int	main(int ac, char **av)
 		return (0);
 	else if (ac == 2)
 		av = ft_split(av[1], ' ');
-	else if (ac > 2)
-		free_errors(&a, ac, av);
 	init_stack_a(&a, ac, av);
 	if (!stack_sorted(a))
 	{
@@ -41,7 +39,8 @@ int	main(int ac, char **av)
 		else
 			turk(&a, &b);
 	}
-	free_arrays((void **)av);
+	if (ac == 2)
+		free_arrays((void **)av);
 	free_stack(&a);
 	return (0);
 }
