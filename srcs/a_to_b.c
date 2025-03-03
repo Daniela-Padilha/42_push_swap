@@ -27,7 +27,7 @@ static void	find_target_a(t_node *a, t_node *b)
 		actual_b = b;
 		while (actual_b)
 		{
-			if (actual_b->value > a->value && actual_b->value > target_value)
+			if (actual_b->value < a->value && actual_b->value > target_value)
 			{
 				target_value = actual_b->value;
 				target_node = actual_b;
@@ -62,7 +62,7 @@ void	get_index(t_node *stack)
 		else
 			stack->above_median = false;
 		stack = stack->next;
-		i++;
+		++i;
 	}
 }
 
